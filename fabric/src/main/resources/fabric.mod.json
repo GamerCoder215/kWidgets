@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "${project.ext.id}",
+  "name": "${project.ext.name}",
+  "description": "${project.description}",
+  "version": "${project.version}",
+  "entrypoints": {
+    "client": [
+      "me.gamercoder215.kwidgets.fabric.FabricProvider"
+    ]
+  },
+  "environment": "client",
+  "authors": [
+    {
+      "name": "${project.ext.author}"
+    }
+  ],
+  "license": "${project.ext.license}",
+  "contact": {
+    "sources": "${project.ext.github}",
+    "discord": "${project.ext.discord}"
+  },
+  "icon": {
+    "64": "icon-x64.png",
+    "128": "icon-x128.png",
+    "256": "icon.png",
+    "512": "icon-x512.png"
+  }
+}

@@ -1,0 +1,14 @@
+modLoader="kotlinforforge"
+loaderVersion="[4.6,)"
+
+license="${project.ext.license}"
+issueTrackerURL="${project.ext.github}/issues/new/choose"
+showAsResourcePack=false
+
+[[mods]]
+  modId="${project.ext.id}"
+  version="${project.version}"
+  displayName="${project.ext.name}"
+  logoFile="icon.png"
+  authors="${project.ext.author}"
+  description="${project.description}"
