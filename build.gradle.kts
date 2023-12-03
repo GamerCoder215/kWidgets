@@ -17,7 +17,14 @@ allprojects {
     group = "me.gamercoder215.kwidgets"
     version = "0.1.0"
     description = "Forge, Fabric & Quilt Client Mod featuring 100+ customizable widgets available on your screen, written in Kotlin."
-    val author = "GamerCoder"
+    project.ext.apply {
+        this["id"] = "kwidgets"
+        this["name"] = "kWidgets"
+        this["github"] = "https://github.com/GamerCoder215/kWidgets"
+        this["discord"] = "https://discord.gg/WVFNWEvuqX"
+        this["author"] = "GamerCoder215"
+        this["license"] = "LGPL-3.0"
+    }
 
     repositories {
         mavenCentral()
@@ -33,6 +40,7 @@ allprojects {
         maven("https://maven.quiltmc.org/repository/release")
         maven("https://maven.minecraftforge.net/")
         maven("https://maven.parchmentmc.org")
+        maven("https://thedarkcolour.github.io/KotlinForForge/")
     }
 
 }
@@ -41,4 +49,16 @@ subprojects {
     apply(plugin = "org.jetbrains.kotlin.jvm")
     apply(plugin = "com.github.johnrengelman.shadow")
     apply<JacocoPlugin>()
+
+    dependencies {
+        compileOnly(kotlin("stdlib"))
+    }
+
+    tasks {
+        processResources {
+            filesNotMatching("**/*.png") {
+                expand(project.properties)
+            }
+        }
+    }
 }

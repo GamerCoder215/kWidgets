@@ -17,6 +17,7 @@ dependencies {
     })
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
+    modImplementation("net.fabricmc:fabric-language-kotlin:1.10.16+kotlin.1.9.21")
 }
 
 tasks {

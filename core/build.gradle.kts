@@ -1,0 +1,5 @@
+tasks {
+    processResources {
+        include("**/*.png")
+    }
+}

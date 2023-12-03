@@ -9,6 +9,7 @@ dependencies {
     api(project(":kwidgets-core"))
 
     minecraft(libs.forge)
+    implementation("thedarkcolour:kotlinforforge:3.12.0")
 }
 
 minecraft {
