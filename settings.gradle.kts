@@ -2,7 +2,7 @@ rootProject.name = "kWidgets"
 
 // Modules
 
-listOf("core", "fabric", "forge", "quilt").forEach {
+listOf("core", "fabric", "forge").forEach {
     include(":kwidgets-$it")
     project(":kwidgets-$it").projectDir = rootDir.resolve(it)
 }
@@ -14,7 +14,6 @@ pluginManagement {
         gradlePluginPortal()
 
         maven("https://maven.fabricmc.net/")
-        maven("https://maven.quiltmc.org/repository/release")
         maven("https://maven.minecraftforge.net/")
         maven("https://maven.parchmentmc.org")
     }

@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
+
 plugins {
     kotlin("jvm") version "1.9.21" apply false
     id("com.github.johnrengelman.shadow") version "8.1.1" apply false
@@ -16,7 +18,7 @@ allprojects {
 
     group = "me.gamercoder215.kwidgets"
     version = "0.1.0"
-    description = "Forge, Fabric & Quilt Client Mod featuring 100+ customizable widgets available on your screen, written in Kotlin."
+    description = "Client Mod featuring 100+ customizable widgets available on your screen, written in Kotlin."
     project.ext.apply {
         this["id"] = "kwidgets"
         this["name"] = "kWidgets"
@@ -37,7 +39,6 @@ allprojects {
 
         maven("https://repo.codemc.org/repository/nms/")
         maven("https://maven.fabricmc.net/")
-        maven("https://maven.quiltmc.org/repository/release")
         maven("https://maven.minecraftforge.net/")
         maven("https://maven.parchmentmc.org")
         maven("https://thedarkcolour.github.io/KotlinForForge/")
