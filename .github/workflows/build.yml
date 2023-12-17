@@ -25,7 +25,7 @@ jobs:
       - name: Change Permissions
         run: chmod +x ./gradlew
       - name: Setup Project
-        run: ./gradlew project tasks :kwidgets-mod:dependencies
+        run: ./gradlew project tasks :kwidgets-fabric:dependencies :kwidgets-forge:dependencies
 
   build:
     runs-on: ubuntu-latest
