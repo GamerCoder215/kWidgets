@@ -2,7 +2,7 @@ rootProject.name = "kWidgets"
 
 // Modules
 
-listOf("core", "fabric", "forge").forEach {
+listOf("core", "fabric", "forge", "mod").forEach {
     include(":kwidgets-$it")
     project(":kwidgets-$it").projectDir = rootDir.resolve(it)
 }
