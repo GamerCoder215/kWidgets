@@ -14,7 +14,7 @@ dependencies {
     minecraft(libs.minecraft)
     mappings(loom.layered {
         officialMojangMappings()
-        parchment("org.parchmentmc.data:parchment-${libs.versions.minecraft.get()}:${libs.versions.parchment.build.get()}@zip")
+//        parchment("org.parchmentmc.data:parchment-${libs.versions.minecraft.get()}:${libs.versions.parchment.build.get()}@zip")
     })
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
@@ -28,10 +28,12 @@ tasks {
 
     shadowJar {
         dependencies {
-            exclude {
-                it.moduleGroup != project.group
-            }
+            include { it.moduleGroup == project.group }
         }
+
+        exclude("mappings/**")
+
+        archiveClassifier.set("dev")
     }
 
     remapJar {
@@ -39,7 +41,7 @@ tasks {
 
         inputFile.set(shadowJar.get().archiveFile)
         addNestedDependencies.set(true)
-        archiveClassifier.set("remapped")
+        archiveFileName.set("${project.name}-${project.version}.jar")
     }
 }
 

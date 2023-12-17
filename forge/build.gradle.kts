@@ -13,7 +13,8 @@ dependencies {
 }
 
 minecraft {
-    mappings("parchment", "${libs.versions.parchment.build.get()}-${libs.versions.minecraft.get()}")
+//    mappings("parchment", "${libs.versions.parchment.build.get()}-${libs.versions.minecraft.get()}")
+    mappings("official", libs.versions.minecraft.get())
 
     copyIdeResources.set(true)
 }
@@ -25,19 +26,24 @@ tasks {
 
     shadowJar {
         dependencies {
-            exclude {
-                it.moduleGroup != project.group
-            }
+            include { it.moduleGroup == project.group }
         }
+
+        archiveClassifier.set("dev")
     }
 
     register<Copy>("copyReobfShadowJar") {
         dependsOn("reobfShadowJar", "reobfJar")
 
+        val buildDir = project.layout.buildDirectory.get()
+        val name = "${project.name}-${project.version}.jar"
+
         destinationDir = file("$buildDir/libs")
 
         from("$buildDir/reobfShadowJar/output.jar")
-        rename { _ -> "${project.name}-${project.version}.jar"}
+        rename { _ -> name }
+
+        outputs.file("$buildDir/libs/$name")
     }
 }
 
