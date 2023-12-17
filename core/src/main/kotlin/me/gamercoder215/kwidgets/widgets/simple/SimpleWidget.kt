@@ -21,11 +21,10 @@ abstract class SimpleWidget(
     val color: WidgetSetting<Color> = WidgetSetting.color("text-color")
 
     override fun render(provider: Provider, x: Int, y: Int, width: Int, height: Int) {
-        val size = width * 11.floorDiv(16)
         val cx = centeredX(x)
-        val cy = centeredY(y) - size.div(2)
+        val cy = centeredY(y) - 5
 
-        provider.draw(text, cx, cy, size, setting(color).rgb)
+        provider.draw(text, cx, cy, 11, setting(color).rgb)
     }
 
 }
