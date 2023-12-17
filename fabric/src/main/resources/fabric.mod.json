@@ -23,7 +23,7 @@
   "icon": {
     "64": "icon-x64.png",
     "128": "icon-x128.png",
-    "256": "icon.png",
+    "256": "icon-x256.png",
     "512": "icon-x512.png"
   }
 }

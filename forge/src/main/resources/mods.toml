@@ -9,6 +9,6 @@ showAsResourcePack=false
   modId="${project.ext.id}"
   version="${project.version}"
   displayName="${project.ext.name}"
-  logoFile="icon.png"
+  logoFile="icon-x256.png"
   authors="${project.ext.author}"
   description="${project.description}"
