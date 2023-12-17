@@ -2,6 +2,7 @@
 
 import net.fabricmc.loom.api.LoomGradleExtensionAPI
 import net.fabricmc.loom.task.RemapJarTask
+import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
 
 plugins {
     alias(libs.plugins.fabric.loom)
@@ -12,12 +13,12 @@ dependencies {
 
     minecraft(libs.minecraft)
     mappings(loom.layered {
-        parchment("org.parchmentmc.data:parchment-${libs.versions.minecraft.get()}:${libs.versions.parchment.build.get()}")
         officialMojangMappings()
+        parchment("org.parchmentmc.data:parchment-${libs.versions.minecraft.get()}:${libs.versions.parchment.build.get()}@zip")
     })
     modImplementation(libs.fabric.loader)
     modImplementation(libs.fabric.api)
-    modImplementation("net.fabricmc:fabric-language-kotlin:1.10.16+kotlin.1.9.21")
+    modImplementation("net.fabricmc:fabric-language-kotlin:1.10.16+kotlin.${getKotlinPluginVersion()}")
 }
 
 tasks {
