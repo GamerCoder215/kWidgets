@@ -1,19 +1,19 @@
 package me.gamercoder215.kwidgets.widgets
 
 import me.gamercoder215.kwidgets.Provider
-import me.gamercoder215.kwidgets.widgets.simple.Fps
-import me.gamercoder215.kwidgets.widgets.simple.Location
-import me.gamercoder215.kwidgets.widgets.simple.Ping
-import me.gamercoder215.kwidgets.widgets.simple.Time
+import me.gamercoder215.kwidgets.widgets.simple.*
 import java.lang.annotation.Inherited
 
 // Registered Widgets
 
 val widgets: Set<Class<out Widget>> = setOf(
+    // Simple Widgets
     Time::class,
     Fps::class,
     Ping::class,
-    Location::class
+    Location::class,
+    MinecraftVersion::class,
+    OperatingSystem::class
 ).map { it.java }.toSet()
 
 // Abstraction
