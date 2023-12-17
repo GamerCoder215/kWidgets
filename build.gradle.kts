@@ -17,7 +17,7 @@ allprojects {
     apply<JavaLibraryPlugin>()
 
     group = "me.gamercoder215.kwidgets"
-    version = "0.1.0"
+    version = "0.1.0-1.20.4"
     description = "Client Mod featuring 100+ customizable widgets available on your screen, written in Kotlin."
     project.ext.apply {
         this["id"] = "kwidgets"
@@ -56,6 +56,10 @@ subprojects {
     }
 
     tasks {
+        jar {
+            archiveClassifier.set("")
+        }
+
         processResources {
             filesNotMatching("**/*.png") {
                 expand(project.properties)
