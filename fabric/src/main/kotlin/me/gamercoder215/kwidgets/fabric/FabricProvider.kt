@@ -1,9 +1,12 @@
 package me.gamercoder215.kwidgets.fabric
 
 import me.gamercoder215.kwidgets.Provider
+import me.gamercoder215.kwidgets.Provider.Companion.provider
+import me.gamercoder215.kwidgets.util.DEFAULT_FONT_SIZE
 import net.fabricmc.api.ClientModInitializer
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
+import net.minecraft.client.renderer.blockentity.SignRenderer
 import java.util.*
 
 class FabricProvider : ClientModInitializer, Provider {
@@ -12,10 +15,14 @@ class FabricProvider : ClientModInitializer, Provider {
     lateinit var graphics: GuiGraphics
 
     override fun onInitializeClient() {
-        Provider.provider = this
+        provider = this
         minecraft = Minecraft.getInstance()
         graphics = GuiGraphics(minecraft, minecraft.renderBuffers().bufferSource())
     }
+
+    // Provider
+
+    // <editor-fold desc="Field Implementation" defaultState="collapsed">
 
     override val locale: Locale
         get() = Locale(minecraft.languageManager.selected.split("_").first(), minecraft.languageManager.selected.split("_").last().uppercase())
@@ -35,9 +42,21 @@ class FabricProvider : ClientModInitializer, Provider {
     override val z: Int
         get() = minecraft.player?.z?.toInt() ?: 0
 
-    // Provider
+    override val version: String
+        get() = minecraft.launchedVersion
 
-    override fun draw(text: String, x: Int, y: Int, size: Int, color: Int, shadow: Boolean) {
+    // </editor-fold>
+
+    // <editor-fold desc="Function Implementation" defaultstate="collapsed">
+
+    override fun draw(text: String, x: Int, y: Int, size: Float, color: Int, shadow: Boolean) {
+        val scale = size / DEFAULT_FONT_SIZE
+
+        graphics.pose().pushPose()
+        graphics.pose().scale(scale, scale, scale)
         graphics.drawString(minecraft.font, text, x, y, color, shadow)
+        graphics.pose().popPose()
     }
+
+    // </editor-fold>
 }
