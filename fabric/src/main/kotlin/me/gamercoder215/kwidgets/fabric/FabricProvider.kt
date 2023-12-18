@@ -3,10 +3,11 @@ package me.gamercoder215.kwidgets.fabric
 import me.gamercoder215.kwidgets.Provider
 import me.gamercoder215.kwidgets.Provider.Companion.provider
 import me.gamercoder215.kwidgets.util.DEFAULT_FONT_SIZE
+import me.gamercoder215.kwidgets.util.WPlayer
 import net.fabricmc.api.ClientModInitializer
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
-import net.minecraft.client.renderer.blockentity.SignRenderer
+import net.minecraft.resources.ResourceLocation
 import java.util.*
 
 class FabricProvider : ClientModInitializer, Provider {
@@ -33,17 +34,11 @@ class FabricProvider : ClientModInitializer, Provider {
     override val ping: Long
         get() = minecraft.currentServer?.ping ?: -1
 
-    override val x: Int
-        get() = minecraft.player?.x?.toInt() ?: 0
-
-    override val y: Int
-        get() = minecraft.player?.y?.toInt() ?: 0
-
-    override val z: Int
-        get() = minecraft.player?.z?.toInt() ?: 0
-
     override val version: String
         get() = minecraft.launchedVersion
+
+    override val player: WPlayer
+        get() = FabricPlayer
 
     // </editor-fold>
 
@@ -55,6 +50,12 @@ class FabricProvider : ClientModInitializer, Provider {
         graphics.pose().pushPose()
         graphics.pose().scale(scale, scale, scale)
         graphics.drawString(minecraft.font, text, x, y, color, shadow)
+        graphics.pose().popPose()
+    }
+
+    override fun drawImage(image: String, x: Int, y: Int, width: Int, height: Int) {
+        graphics.pose().pushPose()
+        graphics.blitSprite(ResourceLocation(image), x, y, width, height)
         graphics.pose().popPose()
     }
 

@@ -22,13 +22,13 @@ open class SimpleTextWidget(override val text: String, size: WSize, override val
 @WInfo("widgets.fps", PERFORMANCE)
 class Fps : SimpleTextWidget("${provider.fps} FPS", SMALL, 1)
 
-@WInfo("widgets.ping", PERFORMANCE)
-class Ping : SimpleTextWidget("${provider.ping} ms", SMALL, 1)
+@WInfo("widgets.latency", PERFORMANCE)
+class Latency : SimpleTextWidget("${provider.ping} ms", SMALL, 1)
 
 // Utility
 
 @WInfo("widgets.location", UTILITY)
-class Location : SimpleTextWidget("${provider.x}, ${provider.y}, ${provider.z}", SMALL, 1)
+class Location : SimpleTextWidget("${provider.player.x}, ${provider.player.y}, ${provider.player.z}", SMALL, 1)
 
 @WInfo("widgets.minecraft_version", UTILITY)
 class MinecraftVersion : SimpleTextWidget("Minecraft ${provider.version}", SMALL)

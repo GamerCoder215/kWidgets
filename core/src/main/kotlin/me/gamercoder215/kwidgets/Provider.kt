@@ -1,5 +1,6 @@
 package me.gamercoder215.kwidgets
 
+import me.gamercoder215.kwidgets.util.WPlayer
 import java.util.*
 
 interface Provider {
@@ -12,11 +13,7 @@ interface Provider {
 
     val ping: Long
 
-    val x: Int
-
-    val y: Int
-
-    val z: Int
+    val player: WPlayer
 
     val version: String
 
@@ -26,6 +23,8 @@ interface Provider {
         = draw(text, x, y, size.toFloat(), color, shadow)
 
     fun draw(text: String, x: Int, y: Int, size: Float, color: Int, shadow: Boolean = true)
+
+    fun drawImage(image: String, x: Int, y: Int, width: Int, height: Int)
 
     companion object {
         lateinit var provider: Provider

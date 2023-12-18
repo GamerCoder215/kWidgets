@@ -4,9 +4,11 @@ import me.gamercoder215.kwidgets.Provider
 import me.gamercoder215.kwidgets.Provider.Companion.provider
 import me.gamercoder215.kwidgets.util.DEFAULT_FONT_SIZE
 import me.gamercoder215.kwidgets.util.MOD_ID
+import me.gamercoder215.kwidgets.util.WPlayer
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
 import net.minecraft.client.renderer.blockentity.SignRenderer
+import net.minecraft.resources.ResourceLocation
 import net.minecraftforge.fml.common.Mod
 import java.util.*
 
@@ -35,14 +37,8 @@ class ForgeProvider : Provider {
     override val ping: Long
         get() = minecraft.currentServer?.ping ?: -1
 
-    override val x: Int
-        get() = minecraft.player?.x?.toInt() ?: 0
-
-    override val y: Int
-        get() = minecraft.player?.y?.toInt() ?: 0
-
-    override val z: Int
-        get() = minecraft.player?.z?.toInt() ?: 0
+    override val player: WPlayer
+        get() = ForgePlayer
 
     override val version: String
         get() = minecraft.launchedVersion
@@ -57,6 +53,12 @@ class ForgeProvider : Provider {
         graphics.pose().pushPose()
         graphics.pose().scale(scale, scale, scale)
         graphics.drawString(minecraft.font, text, x, y, color, shadow)
+        graphics.pose().popPose()
+    }
+
+    override fun drawImage(image: String, x: Int, y: Int, width: Int, height: Int) {
+        graphics.pose().pushPose()
+        graphics.blitSprite(ResourceLocation(image), x, y, width, height)
         graphics.pose().popPose()
     }
 
