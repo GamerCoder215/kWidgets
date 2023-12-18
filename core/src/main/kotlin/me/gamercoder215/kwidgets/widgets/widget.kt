@@ -10,7 +10,7 @@ val widgets: Set<Class<out Widget>> = setOf(
     // Simple Widgets
     Time::class,
     Fps::class,
-    Ping::class,
+    Latency::class,
     Location::class,
     MinecraftVersion::class,
     OperatingSystem::class
@@ -28,21 +28,13 @@ interface Widget {
 
     val updateInterval: Int
 
-    fun render(provider: Provider, x: Int, y: Int, width: Int, height: Int)
+    fun render(provider: Provider, x: Int, y: Int, currentWidth: Int, currentHeight: Int)
 
     enum class Category {
         UTILITY, PERFORMANCE, FUN, OTHER
     }
 
 }
-
-@Target(AnnotationTarget.CLASS)
-@Retention(AnnotationRetention.RUNTIME)
-@Inherited
-annotation class WInfo(
-    val nameKey: String,
-    val category: Widget.Category = Widget.Category.OTHER
-)
 
 abstract class AbstractWidget(
     override val minWidth: Int,
@@ -69,3 +61,20 @@ enum class WSize(
     LARGE_SQUARE(128, 128),
     EXTRA_LARGE_SQUARE(256, 256)
 }
+
+// Annotations
+
+@Target(AnnotationTarget.CLASS)
+@Retention(AnnotationRetention.RUNTIME)
+@Inherited
+annotation class WInfo(
+    val nameKey: String,
+    val category: Widget.Category = Widget.Category.OTHER
+)
+
+@Target(AnnotationTarget.CLASS)
+@Retention(AnnotationRetention.RUNTIME)
+@Inherited
+annotation class WMultaple(
+    val max: Int = -1
+)
