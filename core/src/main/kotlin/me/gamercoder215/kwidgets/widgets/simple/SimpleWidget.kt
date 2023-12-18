@@ -20,7 +20,7 @@ abstract class SimpleWidget(
     @WSetting("settings.widget.text-color")
     val color: WidgetSetting<Color> = WidgetSetting.color("text-color")
 
-    override fun render(provider: Provider, x: Int, y: Int, width: Int, height: Int) {
+    override fun render(provider: Provider, x: Int, y: Int, currentWidth: Int, currentHeight: Int) {
         val cx = centeredX(x)
         val cy = centeredY(y) - 5
 
