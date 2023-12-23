@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.plugin.getKotlinPluginVersion
-
 plugins {
     kotlin("jvm") version "1.9.22" apply false
     id("org.sonarqube") version "4.0.0.2929"
