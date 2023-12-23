@@ -20,10 +20,10 @@ open class SimpleTextWidget(override val text: String, size: WSize, override val
 // Performance
 
 @WInfo("widgets.fps", PERFORMANCE)
-class Fps : SimpleTextWidget("${provider.fps} FPS", SMALL, 1)
+class Fps : SimpleTextWidget("${provider.computer.fps} FPS", SMALL, 1)
 
 @WInfo("widgets.latency", PERFORMANCE)
-class Latency : SimpleTextWidget("${provider.ping} ms", SMALL, 1)
+class Latency : SimpleTextWidget("${provider.computer.ping} ms", SMALL, 1)
 
 // Utility
 
@@ -31,7 +31,7 @@ class Latency : SimpleTextWidget("${provider.ping} ms", SMALL, 1)
 class Location : SimpleTextWidget("${provider.player.x}, ${provider.player.y}, ${provider.player.z}", SMALL, 1)
 
 @WInfo("widgets.minecraft_version", UTILITY)
-class MinecraftVersion : SimpleTextWidget("Minecraft ${provider.version}", SMALL)
+class MinecraftVersion : SimpleTextWidget("Minecraft ${provider.computer.version}", SMALL)
 
 @WInfo("widgets.os", UTILITY)
 class OperatingSystem : SimpleTextWidget(System.getProperty("os.name"), SMALL)

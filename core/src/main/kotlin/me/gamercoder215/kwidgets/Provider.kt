@@ -1,5 +1,6 @@
 package me.gamercoder215.kwidgets
 
+import me.gamercoder215.kwidgets.util.WComputer
 import me.gamercoder215.kwidgets.util.WPlayer
 import java.util.*
 
@@ -9,13 +10,9 @@ interface Provider {
 
     val locale: Locale
 
-    val fps: Int
-
-    val ping: Long
+    val computer: WComputer
 
     val player: WPlayer
-
-    val version: String
 
     // Functions
 

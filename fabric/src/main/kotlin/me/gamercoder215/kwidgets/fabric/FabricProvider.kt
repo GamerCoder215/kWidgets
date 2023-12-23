@@ -3,6 +3,7 @@ package me.gamercoder215.kwidgets.fabric
 import me.gamercoder215.kwidgets.Provider
 import me.gamercoder215.kwidgets.Provider.Companion.provider
 import me.gamercoder215.kwidgets.util.DEFAULT_FONT_SIZE
+import me.gamercoder215.kwidgets.util.WComputer
 import me.gamercoder215.kwidgets.util.WPlayer
 import net.fabricmc.api.ClientModInitializer
 import net.minecraft.client.Minecraft
@@ -28,17 +29,11 @@ class FabricProvider : ClientModInitializer, Provider {
     override val locale: Locale
         get() = Locale(minecraft.languageManager.selected.split("_").first(), minecraft.languageManager.selected.split("_").last().uppercase())
 
-    override val fps: Int
-        get() = minecraft.fps
-
-    override val ping: Long
-        get() = minecraft.currentServer?.ping ?: -1
-
-    override val version: String
-        get() = minecraft.launchedVersion
-
     override val player: WPlayer
         get() = FabricPlayer
+
+    override val computer: WComputer
+        get() = FabricComputer
 
     // </editor-fold>
 
