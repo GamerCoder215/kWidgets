@@ -1,9 +1,9 @@
-package me.gamercoder215.kwidgets.widgets.images
+package me.gamercoder215.kwidgets.widgets.image
 
 import me.gamercoder215.kwidgets.Provider
 import me.gamercoder215.kwidgets.widgets.AbstractWidget
 
-abstract class ImageWidget(
+abstract class SingleImageWidget(
     minWidth: Int,
     minHeight: Int,
     override val free: Boolean = false
